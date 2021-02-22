@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+		<!-- Font awesome code -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/delete.js}"></script>
+		<meta charset="utf-8">
+		<title>Vista CRUD de pacientes</title>
+	</head>
+	
+	<body>
+		<header th:replace="tables_frontend::segheader"></header>
+		
+		<div sec:authorize="hasRole('ROLE_ADMIN')" class="container header" id="title">
+			<h2 class="text-center">List of Patients</h2>
+		</div>
+		<div sec:authorize="hasRole('ROLE_ADMIN')" class="container alert alert-warning" th:if="${pacientes.empty}">
+			Patients not included in the table.
+		</div>
+		
+		<div sec:authorize="hasRole('ROLE_ADMIN')" class="container" id="table">
+			<a class="btn btn-secondary text-white" th:href="@{/patients/formPatient}"><i class="fas fa-user-injured"></i> Add patient</a>
+		
+			<table class="table table-bordered text-center">
+				<thead class="bg-info">
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Apellidos</th>
+						<th>Edad</th>
+						<th>Dirección</th>
+						<th>Foto</th>
+						<th>Username</th>
+						<th>Password</th>
+						<th colspan="3">Funciones</th>
+					</tr>
+				</thead>
+				<tbody class="table table-white" th:each="patient: ${pacientes}">
+					<tr>
+						<td th:text="${patient.id}"></td>
+						<td th:text="${patient.nombre}"></td>
+						<td th:text="${patient.apellidos}"></td>
+						<td th:text="${patient.edad}"></td>
+						<td th:text="${patient.direccion}"></td>
+						<td><img th:src="${#strings.isEmpty(patient.foto)} ? 'http://localhost:8080/images/default.png' : ${patient.foto}" class="img-responsive center-block" alt="Image" id="image"><td>
+						<td th:text="${patient.username}"></td>
+						<td th:text="${patient.password}"></td>
+						<td><a href="#" th:href="@{/patients/showPatient/}+${patient.id}"><i class="fas fa-user"></i></a></td>
+						<td><a href="#" th:href="@{/patients/formPatient/}+${patient.id}"><i class="fas fa-pen-square"></i></a></td>
+						<td><a href="#" th:href="@{/patients/deletePatient/}+${patient.id}" th:onclick="formModal(patient.id)"><i class="fas fa-trash"></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			
+			<div sec:authorize="hasRole('ROLE_ADMIN')" class="alert alert-success" th:if="${add!=null}" th:text="${add}"></div>
+			<div sec:authorize="hasRole('ROLE_ADMIN')" class="alert alert-primary" th:if="${edit!=null}" th:text="${edit}"></div>
+			<div sec:authorize="hasRole('ROLE_ADMIN')" class="alert alert-danger" th:if="${delete!=null}" th:text="${delete}"></div>
+		</div>
+		
+		<footer th:replace="tables_frontend::segcopyright"></footer>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+		<meta charset="UTF-8">
+		<title>Error en el servidor</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/errors.css}"/>
+	</head>
+
+	<body>
+		<div class="col-md-6 col-md-offset text-center">
+			<div class="container" id="error">
+				<h1 class="text-secondary text-center" id="title">ERROR 500</h1>
+				<p class="text-left" id="txt">Problemas en la solicitud de los datos...</p>
+			</div>
+			<div class="panel panel-default">
+				<img th:src="@{/errors/500.png}"/>
+			</div>
+		</div>
+	</body>
+</html>

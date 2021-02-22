@@ -1,0 +1,60 @@
+/*-------Parte del menú--------*/
+#menu {
+	padding-left: 1%;
+	margin-top: -42%;
+	margin-right: 68%;
+}
+
+#logo {
+	width: 40px;
+	height: 30px;
+}
+
+#panel { 
+	width: auto;
+	height: 832px;
+	margin-left: 32%;
+	background-image: url('/images/clinicapp.png');
+}
+
+#title { margin-top: 6.5%; }
+#menu #txt { margin-top: 4%; }
+
+ul{ list-style: none; }
+
+#footmenu {
+	padding-top: 0.65%;
+	padding-bottom: 0.65%;
+	margin-top: 28.4%;
+}
+
+/*----------Our tables-----------*/
+#header { margin-right: 40%; }
+
+#navbarResponsive {margin-left: 71em;}
+
+#table {
+	margin-top: 2.6%;
+	margin-bottom: 7.65%;
+}
+
+#nombre { margin-top: 1.4em; }
+
+#apellidos { margin-top: 1.4em; }
+
+#edad { margin-top: 1.4em; }
+
+#direccion { margin-top: 1.4em; }
+
+#foto { margin-top: 1.4em; }
+
+#username { margin-top: 1.4em; }
+
+#password { margin-top: 1.4em; }
+
+#footer {
+	font-family: helvetica;
+	margin-top: 22%;
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
+}

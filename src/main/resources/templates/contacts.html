@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Información sobre la empresa</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/information.css}"/>
+	</head>
+	
+	<body>
+		<header>
+			<nav class="navbar navbar-light bg-dark">
+  				<span class="navbar-brand">
+    			<img th:src="@{/images/icon.png}" id="logo" class="d-inline-block align-top">
+    				<span class="text-white">SegPrivadoApp</span>
+  				</span>
+  			
+  				<ul class="nav">
+      				<li sec:authorize="!isAuthenticated()" class="nav-item">
+      					<a class="btn btn-dark" th:href="@{/information}"><i class="fas fa-info-circle"></i> Information of employee</a>
+      				</li>
+      				<li sec:authorize="!isAuthenticated()" class="nav-item">
+      					<a class="btn btn-dark" th:href="@{/menu}"><i class="fas fa-home"></i> Back to menu</a>
+      				</li>
+    			</ul>
+			</nav>
+		</header>
+	
+		<div class="panel panel-default bg-white" id="menu">
+			<h2 class="text-primary" id="title">Contactos</h2>
+			<p class="text-left">
+				<ul class="list-group">
+					<li class="list-group-item border-white"><i>Email:</i> munoz.chjul20@cadiz.salesianos.edu</li>
+					<li class="list-group-item border-white"><i>Tfno:</i> 123456543</li>
+				</ul>
+			</p>
+		</div>
+		
+		<footer class="bg-secondary" id="footmenu">
+		 	<div class="panel panel-default text-center">
+  	  			<span class="text-white"><i class="fas fa-copyright"></i> Copyright 2021. All rights reserved</span>
+  	  		</div>
+		</footer>
+	</body>
+</html>

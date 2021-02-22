@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- CSS code -->
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+		<!-- Font awesome code -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<!-- JS code -->
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+		<meta charset="utf-8">
+		<title>Consulta de médicos</title>
+	</head>
+	
+	<body>
+		<header th:replace="tables_frontend::segheader"></header>
+		
+		<div sec:authorize="hasRole('ROLE_VISITANTE')" class="container header" id="title">
+			<h2 class="text-center">List of Doctors</h2>
+		</div>
+		<div sec:authorize="hasRole('ROLE_VISITANTE')" class="container alert alert-warning" th:if="${medicos.empty}">
+			Doctors not included in the table.
+		</div>
+		
+		<div sec:authorize="hasRole('ROLE_VISITANTE')" class="container" id="doctors">		
+			<table class="table table-bordered text-center">
+				<thead class="bg-info">
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Apellidos</th>
+						<th>Especialidad</th>
+					</tr>
+				</thead>
+				<tbody class="table table-white" th:each="doctor: ${medicos}">
+					<tr>
+						<td th:text="${doctor.id}"></td>
+						<td th:text="${doctor.nombre}"></td>
+						<td th:text="${doctor.apellidos}"></td>
+						<td th:text="${doctor.especialidad}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<footer th:replace="tables_frontend::segcopyright"></footer>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>

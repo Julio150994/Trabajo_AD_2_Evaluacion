@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- CSS code y font awesome -->
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<!-- JS code -->
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+		<meta charset="utf-8">
+		<title>Formulario para almacenar medicamento</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/form.css}"/>
+	</head>
+
+	<body>
+		<div sec:authorize="hasRole('ROLE_ADMIN')" class="container">
+			<form action="#" th:action="@{/medicines/saveMedicine}" th:object="${medicine}" method="post">
+			<input type="hidden" name="${_crsf.parameterName}" value="${_csrf.token}"/>
+				<h2 th:text="${medicine.id != 0}? 'Edit medicine': 'Add medicine'"  class="text-center" id="form"></h2>
+				<input type="hidden" th:field="*{id}" name="id" id="id"/>
+				
+				<div class="form-group">
+					<label for="nombre">Name</label>
+					<input type="text" th:field="*{nombre}" id="nombre" name="nombre" placeholder="Enter name" th:value="*{nombre}" class="form-control"/>
+					<div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">You must enter a name.</div>
+				</div>
+				<div class="form-group">
+					<label for="descripcion">Description</label>
+					<input type="text" th:field="*{descripcion}" id="descripcion" name="descripcion" placeholder="Enter description" th:value="*{descripcion}" class="form-control"/>
+					<div th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}">You must enter a description.</div>
+				</div>
+				<div class="form-group">
+					<label for="receta">Prescription</label>
+					<select th:field="*{receta}" id="receta" name="receta" th:value="*{receta}" class="form-control">
+						<option value="s">Con receta</option>
+						<option value="n">Sin receta</option>
+					</select>
+					<div th:if="${#fields.hasErrors('receta')}" th:errors="*{receta}">You must enter a prescription.</div>
+				</div>
+				<div class="form-group">
+					<label for="price">Price</label>
+					<input type="number" th:field="*{precio}" id="precio" name="precio" placeholder="Enter price" th:value="*{precio}" class="form-control"/>
+					<div th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}">You must enter a direction.</div>
+				</div>
+				<div class="form-group">
+					<label for="stock">Stock</label>
+					<input type="number" th:field="*{stock}" id="stock" name="stock" th:value="*{stock}" class="form-control"/>
+					<div th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}">You must enter a stock.</div>
+				</div>
+				
+				<a href="#" th:href="@{/medicines/listMedicines}" class="btn btn-secondary"><i class="fas fa-angle-left"></i> Cancel</a>
+				<button type="submit" class="btn btn-info"><i class="fas fa-pencil-alt"></i>Save</button>
+			</form>
+		</div>
+	</body>
+</html>

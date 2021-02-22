@@ -1,0 +1,17 @@
+/*-------Diseño para la información de la empresa y los contactos---------------*/
+#title { 
+	margin-left: 1%;
+	margin-top: 3%;
+}
+
+#logo {
+	width: 40px;
+	height: 30px;
+}
+
+footer {
+	font-family: helvetica;
+	margin-top: 32.5%;
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
+}

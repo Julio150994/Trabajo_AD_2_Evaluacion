@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- CSS code y font awesome -->
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<!-- JS code -->
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+		<meta charset="UTF-8">
+		<title>Vista mostrar por id</title>
+	</head>
+	<body>						
+		<div sec:authorize="hasRole('ROLE_ADMIN')" class="panel panel-defualt">
+			<h2 class="text-center text-warning">Paciente mostrado por id</h2>
+		</div>
+		<div sec:authorize="hasRole('ROLE_ADMIN')" class="container">
+			<ul class="list-group">
+				<li class="list-group-item"><strong>Id:</strong> <span th:text="${patient.id}"></span></li>
+				<li class="list-group-item"><strong>Nombre:</strong> <span th:text="${patient.nombre}"></span></li>
+				<li class="list-group-item"><strong>Apellidos:</strong> <span th:text="${patient.apellidos}"></span></li>
+				<li class="list-group-item"><strong>Edad:</strong> <span th:text="${patient.edad}"></span></li>
+				<li class="list-group-item"><strong>Dirección:</strong> <span th:text="${patient.direccion}"></span></li>
+				<li class="list-group-item"><strong>Perfil:</strong> <span><img th:src="${#strings.isEmpty(patient.foto)} ? 'http://localhost:8080/images/default.png' : ${patient.foto}"/></span></li>
+				<li class="list-group-item"><strong>Username:</strong> <span th:text="${patient.username}"></span></li>
+				<li class="list-group-item"><strong>Password:</strong> <span th:text="${patient.password}"></span></li>
+			</ul>
+		</div><br/>
+		
+		<div sec:authorize="hasRole('ROLE_ADMIN')" class="container card-footer">
+			<a href="#" th:href="@{/patients/listPatients}" class="btn btn-secondary btn-block"><i class="fas fa-angle-left"></i> Back to patients</a>
+		</div>
+	</body>
+</html>

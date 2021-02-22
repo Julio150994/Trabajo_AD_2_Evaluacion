@@ -1,0 +1,24 @@
+#style {
+	margin-left: 12%;
+}
+
+img { 
+	border-radius: 3.2px;
+	margin-top: -12.5%;
+	margin-left: 12%;
+}
+
+#error { 
+	margin-top: 6.1%; 
+	margin-left: 28.6%;
+	font-family: Helvetica;
+	font-size: 45px;
+}
+
+#title { margin-right: 45.2%; }
+
+#txt {
+	margin-left: 57%;
+	font-family: Arial;
+	font-size: 26px;
+}

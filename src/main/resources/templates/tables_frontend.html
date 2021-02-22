@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+  <!-- Font awesome code -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">	
+
+  <!-- Bootstrap core CSS -->
+  <link th:href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/sign.css}"/>
+  
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header th:fragment="segheader">
+  	 <nav class="navbar navbar-expand-lg navbar-secondary bg-secondary">
+      	<div class="container" id="header">
+       		<span class="navbar-brand">
+    		<img th:src="@{/images/icon.png}" width="40" height="30" class="d-inline-block align-top">
+    			<span class="text-white">SegPrivadoApp</span>
+  			</span>
+  			
+       		<ul class="nav">
+          		<li class="nav-item active" sec:authorize="isAuthenticated()">
+            		<a class="btn btn-secondary text-white" th:href="@{/exportInvoice/pdf}"><i class="fas fa-file-pdf"></i> Export to PDF</a>
+          		</li>
+          		<li class="nav-item active" sec:authorize="isAuthenticated()">
+          			<a class="btn btn-secondary text-white" th:href="@{/menu}"><i class="fas fa-home"></i> Back to menu</a>
+          		</li>
+        	</ul>
+     	</div>
+  	</nav>
+  </header>
+  
+  <footer th:fragment="segcopyright" class="bg-dark" id="footer">
+  	  <div class="panel panel-default text-center">
+  	  	<span class="text-white">@Copyright 2021. All rights reserved</span>
+  	  </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script th:src="@{vendor/jquery/jquery.slim.min.js}"></script>
+  <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js"}></script>
+
+</body>
+
+</html>

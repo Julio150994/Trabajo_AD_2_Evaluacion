@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- CSS code y font awesome -->
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<!-- JS code -->
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+		<meta charset="utf-8">
+		<title>Formulario para almacenar paciente</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/form.css}"/>
+	</head>
+
+	<body>
+		<div sec:authorize="hasRole('ROLE_ADMIN')" class="container">
+			<form action="#" th:action="@{/patients/savePatient}" th:object="${patient}" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="${_crsf.parameterName}" value="${_csrf.token}"/>
+				<h2 th:text="${patient.id != 0}? 'Edit patient': 'Add patient'"  class="text-center" id="form"></h2>
+				<img th:if="${patient.id == 0} ? 'http://localhost:8080/images/default.png' : ${patient.foto}" th:src="${patient.id == 0} ? 'http://localhost:8080/images/default.png' : ${patient.foto}" class="img-responsive center-block" id="imagePatient"/>
+				<input type="hidden" th:field="*{id}" name="id" id="id"/>
+				
+				<div class="form-group">
+					<label for="nombre">Name</label>
+					<input type="text" th:field="*{nombre}" id="nombre" name="nombre" placeholder="Enter name" th:value="*{nombre}" class="form-control"/>
+					<div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">You must enter a name.</div>
+				</div>
+				<div class="form-group">
+					<label for="apellidos">Apes</label>
+					<input type="text" th:field="*{apellidos}" id="apellidos" name="apellidos" placeholder="Enter apes" th:value="*{apellidos}" class="form-control"/>
+					<div th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}">You must enter a apes.</div>
+				</div>
+				<div class="form-group">
+					<label for="edad">Age</label>
+					<input type="number" th:field="*{edad}" id="edad" name="edad" placeholder="Enter age" th:value="*{edad}" class="form-control"/>
+					<div th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}">You must enter a age.</div>
+				</div>
+				<div class="form-group">
+					<label for="direccion">Direction</label>
+					<input type="text" th:field="*{direccion}" id="direccion" name="direccion" placeholder="Enter direction" th:value="*{direccion}" class="form-control"/>
+					<div th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">You must enter a direction.</div>
+				</div>
+				<div class="form-group">
+					<label for="file">Photo</label>
+					<input type="file" th:field="*{foto}" id="foto" name="foto" th:value="*{foto}" class="form-control"/>
+					<div th:if="${#fields.hasErrors('foto')}" th:errors="*{foto}">You must enter a photo.</div>
+				</div>
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" th:field="*{username}" id="username" name="username" th:value="*{username}" class="form-control"/>
+					<div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">You must enter a username.</div>
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" th:field="*{password}" id="password" name="password" th:value="*{password}" class="form-control"/>
+					<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">You must enter a password.</div>
+				</div>
+				
+				<a href="#" th:href="@{/patients/listPatients}" class="btn btn-secondary"><i class="fas fa-angle-left"></i> Cancel</a>
+				<button type="submit" class="btn btn-info"><i class="fas fa-pencil-alt"></i>Save</button>
+			</form>
+		</div>
+	</body>
+</html>

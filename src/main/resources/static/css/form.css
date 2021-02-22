@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+/*-------For patient form--------*/
+h2 { margin-top: 1.5%; }
+
+#form { margin-top: 3.85%; }
+
+
+#imagePatient {
+	width: 80px;
+	height: 80px;
+	border-radius: 20%;
+}
